@@ -3,24 +3,19 @@
 
 module Api.Core where
 
-import Api.Services.ScorecardService
-import Control.Lens
-import Snap.Core
-import Snap.Snaplet
+import           Api.Authentication
+import           Api.Services.ScorecardService
+import           Control.Lens
 import qualified Data.ByteString.Char8 as B
+import           Snap.Core
+import           Snap.Snaplet
 
 data Api = Api { _scorecardService :: Snaplet ScorecardService }
 
 makeLenses ''Api
 
-apiRoutes :: [(B.ByteString, Handler b Api ())]
-apiRoutes = [("status", method GET respondOk)]
-
-respondOk :: Handler b Api ()
-respondOk = modifyResponse . setResponseCode $ 200
-
 apiInit :: SnapletInit b Api
 apiInit = makeSnaplet "api" "Core Api" Nothing $ do
-        ts <- nestSnaplet "scorecards" scorecardService scorecardServiceInit
-        addRoutes apiRoutes
-        return $ Api ts
+  wrapSite (\site -> checkAuth >> site)
+  ss <- nestSnaplet "scorecards" scorecardService scorecardServiceInit
+  return $ Api ss

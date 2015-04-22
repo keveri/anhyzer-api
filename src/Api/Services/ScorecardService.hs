@@ -4,14 +4,14 @@
 
 module Api.Services.ScorecardService where
 
-import Api.Types
-import Control.Lens
-import Control.Monad.State.Class
-import Data.Aeson
-import Snap.Core
-import Snap.Snaplet
-import Snap.Snaplet.PostgresqlSimple
+import           Api.Types
+import           Control.Lens
+import           Control.Monad.State.Class
+import           Data.Aeson
 import qualified Data.ByteString.Char8 as B
+import           Snap.Core
+import           Snap.Snaplet
+import           Snap.Snaplet.PostgresqlSimple
 
 data ScorecardService = ScorecardService { _pg :: Snaplet Postgres }
 
