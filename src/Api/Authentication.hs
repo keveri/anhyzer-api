@@ -13,7 +13,7 @@ isValidKey = (==) "secret"
 
 checkAuth :: Handler b v ()
 checkAuth = do
-  header <- getHeader "API-KEY" <$> getRequest
+  header <- getHeader "x-api-key" <$> getRequest
   case header of Just key -> M.unless (isValidKey key) unAuthorized
                  Nothing  -> unAuthorized
 
