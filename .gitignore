@@ -1,5 +1,4 @@
 # Haskell
-
 dist
 cabal-dev
 *.o
@@ -16,4 +15,10 @@ cabal.sandbox.config
 *.prof
 *.aux
 *.hp
-log
+
+# SQLite
+*.db*
+
+# Configs
+*.cfg
+
