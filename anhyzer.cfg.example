@@ -1,0 +1,4 @@
+db          = "anhyzer-api.db"
+port        = 8080
+auth-header = "x-api-key"
+api-keys    = ["secret"]
