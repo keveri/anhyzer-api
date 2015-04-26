@@ -4,11 +4,15 @@ module Anhyzer.Web.App (anhyzerApp) where
 import Anhyzer.Web.Actions.Scorecard as Scorecard
 import Anhyzer.Types
 import Web.Spock.Safe
+import SimpleAuth
+
+requireAuth :: AnhyzerApp ()
+requireAuth = middleware $ headerAuth "x-api-key" ["secret"]
 
 anhyzerApp :: AnhyzerApp ()
 anhyzerApp = do
   get root $ text "Anhyzer API"
-  subcomponent "/api" anhyzerApi
+  subcomponent "/api" $ requireAuth >> anhyzerApi
 
 anhyzerApi :: AnhyzerApp ()
 anhyzerApi =

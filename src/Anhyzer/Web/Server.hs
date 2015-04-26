@@ -9,7 +9,7 @@ import qualified Data.Configurator as C
 import qualified Data.Text as T
 import           Database.Persist.Sqlite hiding (get)
 import           Web.Spock.Safe
-import Network.Wai.Middleware.RequestLogger
+import           Network.Wai.Middleware.RequestLogger
 
 data AppConfig = AppConfig
   { acDb   :: T.Text
