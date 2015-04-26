@@ -3,8 +3,8 @@ module Anhyzer.Web.App (anhyzerApp) where
 
 import Anhyzer.Web.Actions.Scorecard as Scorecard
 import Anhyzer.Types
+import Middleware.SimpleAuth
 import Web.Spock.Safe
-import SimpleAuth
 
 requireAuth :: AnhyzerApp ()
 requireAuth = do

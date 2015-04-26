@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-module SimpleAuth (headerAuth) where
+module Middleware.SimpleAuth (headerAuth) where
 
 import qualified Data.ByteString      as BS (ByteString)
 import qualified Data.CaseInsensitive as CI (mk)
