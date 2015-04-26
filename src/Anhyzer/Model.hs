@@ -10,7 +10,6 @@
 module Anhyzer.Model where
 
 import qualified Data.Text as T
-import           Data.Time
 import           Database.Persist.TH
 
 share [mkPersist sqlSettings, mkMigrate "migrateCore"] [persistLowerCase|
