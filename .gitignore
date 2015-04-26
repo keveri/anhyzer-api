@@ -22,3 +22,5 @@ cabal.sandbox.config
 # Configs
 *.cfg
 
+# Other
+scripts
