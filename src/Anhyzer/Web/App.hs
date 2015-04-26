@@ -7,7 +7,9 @@ import Web.Spock.Safe
 import SimpleAuth
 
 requireAuth :: AnhyzerApp ()
-requireAuth = middleware $ headerAuth "x-api-key" ["secret"]
+requireAuth = do
+  state <- getState
+  middleware $ headerAuth (asHeader state) (asKeys state)
 
 anhyzerApp :: AnhyzerApp ()
 anhyzerApp = do
